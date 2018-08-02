@@ -5,6 +5,12 @@ Dishwasher monitoring group.
 
 Monitor the status of the dishwasher. Provide up-to-date status of the dishwasher to all staff through an LCD and Slack.
 
+Dishwasher states:
+* Dirty
+* Running
+* Drying
+* Clean
+
 ## Hardware
 
 * [Arduino Uno](https://www.sparkfun.com/products/11224)
