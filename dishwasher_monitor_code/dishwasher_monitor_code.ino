@@ -6,8 +6,9 @@ MMA8452Q accel;
 String orient;
 SoftwareSerial lcd(2, 3);
 
-signed short minutes = 128;
-signed short seconds = 59;
+//signed short minutes = 128;
+signed short minutes = 129;
+//signed short seconds = 59;
 char timeline[16];
 byte dishwasher_status;
 void setup() {
@@ -37,17 +38,22 @@ void loop() {
  }
  
 while (dishwasher_status == 1) {
+  clearDisplay();
   // lcd.print(dishwasher_status);
-   sprintf(timeline,"Running         %0.3d mins %0.2d secs", minutes, seconds);
+//   sprintf(timeline,"Running         %0.3d mins %0.2d secs", minutes, seconds);
+   sprintf(timeline,"Running         %0.3d mins", minutes, seconds);
    lcd.print(timeline);
-   delay(1000);
-   seconds--;
+//   delay(1000);
+   delay(60000);
+//   seconds--;
+   minutes--;
    clearDisplay();
-   if (seconds == 00) {
-     seconds = 59;
-     minutes --;
-   }
-   if (seconds == 00 and minutes == 00) {
+//   if (seconds == 00) {
+//     seconds = 59;
+//     minutes --;
+//   }
+//   if (seconds == 00 and minutes == 00) {
+  if (minutes == 0) {
      dishwasher_status = 0;
      lcd.print("Dishwasher off.");
    }
