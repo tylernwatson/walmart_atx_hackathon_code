@@ -2,7 +2,7 @@ import numpy as np
 import serial
 
 vibration_threshold=20
-ser = serial.Serial('/dev/cu.usbmodem14511')
+ser = serial.Serial('/dev/cu.usbmodem14411')
 ser.flushInput()
 
 data_z=[]
