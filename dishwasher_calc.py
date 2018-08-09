@@ -19,3 +19,7 @@ while True:
             readings=[]
         data_z=[]
     data_z.append(float(str(ser.readline().strip(), 'ascii').split(",")[2])*1000)
+    data['status']=int(str(ser.readline().strip(), 'ascii').split(",")[4])
+    data['timestamp']=int(time.time())
+    with open('data.json', 'w') as outfile:
+    json.dump(data, outfile)

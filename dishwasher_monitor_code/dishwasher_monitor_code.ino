@@ -29,7 +29,11 @@ void loop() {
  byte pl=accel.readPL();
  printOrientation();
 
- String sensor_output=String(accel.cx)+","+String(accel.cy)+","+String(accel.cz)+","+orient;
+ if (Serial.available() >0) {
+   // read the incoming byte:
+   dishwasher_status = Serial.read()- '0';
+ }
+ String sensor_output=String(accel.cx)+","+String(accel.cy)+","+String(accel.cz)+","+orient+String(dishwasher_status);
  Serial.println(sensor_output);
 
  if (Serial.available() >0) {
