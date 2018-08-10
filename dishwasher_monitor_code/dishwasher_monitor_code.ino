@@ -21,8 +21,8 @@ void setup() {
 
 void loop() {
  if (accel.available()) {
-  signed short minutes = 1;
-  signed short seconds = 10;
+  signed short minutes = 128;
+  signed short seconds = 59;
 
    accel.read();
  
