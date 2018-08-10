@@ -7,8 +7,6 @@ String orient;
 SoftwareSerial lcd(2, 3);
 
 //signed short minutes = 128;
-signed short minutes = 1;
-signed short seconds = 10;
 char timeline[16];
 byte dishwasher_status;
 void setup() {
@@ -17,12 +15,15 @@ void setup() {
  lcd.begin(9600);
  clearDisplay();
  lcd.print("Dishwasher off.");
- accel.init(SCALE_2G, ODR_12);
+ accel.init(SCALE_2G, ODR_6);
  printOrientation();
 }
 
 void loop() {
  if (accel.available()) {
+  signed short minutes = 1;
+  signed short seconds = 10;
+
    accel.read();
  
  // put your main code here, to run repeatedly:
@@ -33,7 +34,7 @@ void loop() {
    // read the incoming byte:
    dishwasher_status = Serial.read()- '0';
  }
- String sensor_output=String(accel.cx)+","+String(accel.cy)+","+String(accel.cz)+","+orient+String(dishwasher_status);
+ String sensor_output=String(accel.cx*10000)+","+String(accel.cy*10000)+","+String(accel.cz*10000)+","+orient;
  Serial.println(sensor_output);
 
  if (Serial.available() >0) {
